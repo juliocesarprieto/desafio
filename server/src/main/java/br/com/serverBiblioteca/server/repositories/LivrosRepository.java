@@ -2,9 +2,9 @@ package br.com.serverBiblioteca.server.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import br.com.serverBiblioteca.server.models.Libros;
+import br.com.serverBiblioteca.server.models.Livros;
 
 @Repository
-public interface LibrosRepository extends JpaRepository<Libros, Integer>{	
+public interface LivrosRepository extends JpaRepository<Livros, Integer>{	
 	
 }
