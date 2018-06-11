@@ -32,9 +32,9 @@ public class LivrosService {
 	}
 	
 	@CrossOrigin(origins="*")
-	@GetMapping(path="/{criterio}", produces = "application/json")
-	public @ResponseBody List<Livros> findByTitulo(@PathVariable String criterio){
-		List<Livros> libros = livrosRepository.findAllWithTituloLike(criterio);
+	@GetMapping(path="/{criteria}", produces = "application/json")
+	public @ResponseBody List<Livros> getByCriteria(@PathVariable String criteria){
+		List<Livros> libros = livrosRepository.getByCriteria(criteria);
 		return libros;
 	}
 	
@@ -52,7 +52,7 @@ public class LivrosService {
 	
 	@CrossOrigin(origins="*")
 	@PutMapping(consumes="application/json")
-	public ResponseEntity<Void> atualizarlivro(@RequestBody Livros livro){
+	public ResponseEntity<Void> atualizarLivro(@RequestBody Livros livro){
 		try{
 			livrosRepository.save(livro);
 		}catch(Exception e){
@@ -64,7 +64,7 @@ public class LivrosService {
 	
 	@CrossOrigin(origins="*")
 	@DeleteMapping(path="/{idLivros}")
-	public ResponseEntity<Void> delete(@PathVariable Integer idLivros){
+	public ResponseEntity<Void> deleteLivro(@PathVariable Integer idLivros){
 		try{
 			livrosRepository.deleteById(idLivros);
 		}catch(Exception e){

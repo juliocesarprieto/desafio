@@ -13,9 +13,9 @@ public interface LivrosRepository extends JpaRepository<Livros, Integer>{
 
 	@Query("SELECT l FROM Livros l "
 			+ "LEFT JOIN FETCH l.categoria c "
-			+ "WHERE l.tituloLivro LIKE CONCAT('%',:criterio,'%') "
-			+ "OR l.descricaoLivro LIKE CONCAT('%',:criterio,'%') "
-			+ "OR l.autor LIKE CONCAT('%',:criterio,'%') "
-			+ "OR c.descricaoCategoria LIKE CONCAT('%',:criterio,'%')")
-	List<Livros> findAllWithTituloLike(@Param("criterio") String criterio);
+			+ "WHERE l.tituloLivro LIKE CONCAT('%',:criteria,'%') "
+			+ "OR l.descricaoLivro LIKE CONCAT('%',:criteria,'%') "
+			+ "OR l.autor LIKE CONCAT('%',:criteria,'%') "
+			+ "OR c.descricaoCategoria LIKE CONCAT('%',:criteria,'%')")
+	List<Livros> getByCriteria(@Param("criteria") String criteria);
 }
