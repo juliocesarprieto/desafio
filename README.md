@@ -17,6 +17,8 @@ cd desafio
 
 Isto vai fazer uma copia do projeto localmente. Para instalar e executar as aplicações, seguir as seguintes instruções:
 
+
+
 Para executar o server, execute o comando `cd server` no `prompt` pra ficar dentro da pasta `server` e executar o seguinte comando: 
  
 ```bash
@@ -48,4 +50,9 @@ export const URL_ROOT={
     port: `porta`
 }
 ```
+
+#### Configuração o Banco de Dados
+
+Na pasta BD contem o `gerenciar_biblioteca.sql`, subir num gestor de bancos de dados MySQL
+
 
