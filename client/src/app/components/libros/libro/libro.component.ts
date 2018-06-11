@@ -29,10 +29,18 @@ export class LibroComponent implements OnInit {
     this.getLivros();
   }
 
+  actionBtnShowFormCadastrar(event){
+    this.showAdicionarLivro = true;
+    this.atualizarLivro =false;
+    this.titleView = 'Adicionar Livro';
+  }
+
   getLivros(){
     this.livroService.getAllLivros().subscribe(
       resp=>{
           this.livros = resp.body;
+          this.showAdicionarLivro = false;
+          this.atualizarLivro =false;
       },
       error=>{
         console.log(error.status)
@@ -53,6 +61,7 @@ export class LibroComponent implements OnInit {
 
       this.livroService.insertLivro(livro).subscribe(
             resp=>{
+              this.getLivros();
             },
             error=>{
               console .log(error);
@@ -74,6 +83,7 @@ export class LibroComponent implements OnInit {
 console.log(livro);
         this.livroService.atualizarLivro(livro).subscribe(
                   resp=>{
+                    this.getLivros();
                   },
                   error=>{                    
                   });
@@ -93,6 +103,14 @@ console.log(livro);
     this.atualizarLivro=true;
     this.livroAtualizar = livro;
     this.showAdicionarLivro = true;
+  }
+
+  actionBtnRemoverLivro(event, livro : Livros){
+    this.livroService.removerLivro(livro).subscribe(resp=>{
+      this.getLivros();
+    }, error=>{
+
+    })
   }
 
 }

@@ -1,4 +1,5 @@
 <div class="container-fluid" style="margin-top: 6vh;">
+    <div class="row"><button (click)="actionBtnShowFormCadastrar($event)">Adicionar Livro</button></div>
   <div class="row" *ngIf="!showAdicionarLivro">
     <div class="col-md-2"></div>
 
@@ -19,7 +20,7 @@
                   <td>{{livro.descricaoLivro}}</td>
                   <td>{{livro.autor}}</td>
                   <td><button (click)="actionBtnShowViewUpdate($event, livro)" class="btn btn-primary" style="width: 85%; height: 20%"><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger" style="width: 85%"><i class="fa fa-trash"></i></button></td>
+                  <td><button (click)="actionBtnRemoverLivro($event, livro)" class="btn btn-danger" style="width: 85%"><i class="fa fa-trash"></i></button></td>
                 </tr> 
             </tbody>
           </table>

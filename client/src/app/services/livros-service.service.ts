@@ -45,5 +45,11 @@ export class LivrosServiceService {
     );
   }//--- Fim Inserir novo livro ---
 
+  //Remover livro
+  removerLivro(livro : Livros) : Observable<HttpResponse<any>>{
+    return this.httpClient.delete<any>(
+      'http://localhost:8080/api/livros'+"/"+livro.idLivros      
+    )
+  }//--- Fim remover livro ---
 
 }
