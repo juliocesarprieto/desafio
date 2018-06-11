@@ -1,7 +1,6 @@
 package br.com.serverBiblioteca.server.models;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +9,7 @@ public class Categorias implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private Integer idCategorias;
-	
+	private Integer idCategorias;	
 	private String descricaoCategoria;
 	
 	public Categorias() {}
@@ -37,5 +35,6 @@ public class Categorias implements Serializable{
 
 	public void setDescricaoCategoria(String descricaoCategoria) {
 		this.descricaoCategoria = descricaoCategoria;
-	}	
+	}
+	
 }

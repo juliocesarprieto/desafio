@@ -1,3 +1,5 @@
+import { Categorias } from "./categorias";
+
 export interface Livros {
 
     idLivros: number;
@@ -6,5 +8,6 @@ export interface Livros {
     ano: number;
     totalPaginas: number;
     autor: string;
+    categoria: Categorias;
     
 }

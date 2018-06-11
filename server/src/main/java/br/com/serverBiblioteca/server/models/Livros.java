@@ -1,7 +1,6 @@
 package br.com.serverBiblioteca.server.models;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 @Entity
@@ -11,7 +10,7 @@ public class Livros implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idLivros;
 	private String tituloLivro;
 	private String descricaoLivro;
@@ -19,9 +18,13 @@ public class Livros implements Serializable{
 	private Integer totalPaginas;
 	private String autor;
 	
+	@ManyToOne
+	@JoinColumn(name="categoria_fk", referencedColumnName="idCategorias")
+	private Categorias categoria;
+	
 	public Livros() {}
 	
-	public Livros(Integer idLivros, String tituloLivro, String descricaoLivro, Integer ano, Integer totalPaginas, String autor) {
+	public Livros(Integer idLivros, String tituloLivro, String descricaoLivro, Integer ano, Integer totalPaginas, String autor, Categorias categoria) {
 		super();
 		this.idLivros = idLivros;
 		this.tituloLivro = tituloLivro;
@@ -29,6 +32,7 @@ public class Livros implements Serializable{
 		this.ano = ano;
 		this.totalPaginas = totalPaginas;
 		this.autor = autor;
+		this.categoria = categoria;
 	}
 	
 	// Getters and Setters
@@ -70,4 +74,12 @@ public class Livros implements Serializable{
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
+
+	public Categorias getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categorias categoria) {
+		this.categoria = categoria;
+	}	
 }

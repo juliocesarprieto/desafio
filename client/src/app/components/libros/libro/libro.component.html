@@ -1,17 +1,24 @@
-<div class="container-fluid" style="margin-top: 6vh;">
-    <div class="row"><button (click)="actionBtnShowFormCadastrar($event)">Adicionar Livro</button></div>
+<div class="container" style="margin-top: 6vh;">
+    
   <div class="row" *ngIf="!showAdicionarLivro">
     <div class="col-md-2"></div>
 
     <div class="col-md-8">
-        <table class="table table-hover">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <div class="input-group mb-3">
+              
+              <input type="text" class="form-control" aria-label="Text input" placeholder="Search Título, Descrição, Autor, Novela">
+            </div>
+          </div>
+        <table class="table table-hover" style="height: 150px">
             <thead>
               <tr style="background: #66BB6A;">                
                 <th scope="col">Título</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Autor</th>
-                <th scope="col"><i class="fa fa-edit"></i></th>
-                <th scope="col"><i class="fa fa-trash"></i></th>
+                <th scope="col">Categoría</th> 
+                <th></th>
+                <th></th>               
               </tr>
             </thead>
             <tbody>                            
@@ -19,11 +26,13 @@
                   <td>{{livro.tituloLivro}}</td>
                   <td>{{livro.descricaoLivro}}</td>
                   <td>{{livro.autor}}</td>
-                  <td><button (click)="actionBtnShowViewUpdate($event, livro)" class="btn btn-primary" style="width: 85%; height: 20%"><i class="fa fa-edit"></i></button></td>
-                  <td><button (click)="actionBtnRemoverLivro($event, livro)" class="btn btn-danger" style="width: 85%"><i class="fa fa-trash"></i></button></td>
+                  <td>{{livro.categoria.descricaoCategoria}}</td>
+                  <td><button (click)="actionBtnShowViewUpdate($event, livro)" class="btn btn-primary" style="width: 85%;"><i class="fa fa-edit"></i></button></td>
+                  <td><button (click)="actionBtnRemoverLivro($event, livro)" class="btn btn-danger" style="width: 85%;"><i class="fa fa-trash"></i></button></td>
                 </tr> 
             </tbody>
           </table>
+          <div class="row"><button (click)="actionBtnShowFormCadastrar($event)">Adicionar Livro</button></div>
     </div>
 
     <div class="col-md-2"></div>
@@ -39,25 +48,31 @@
                       <div class="form-row">
                         <div class="form-group col-md-12">
                           <label for="inputTitulo">Título</label>
-                           <input [(ngModel)]="titulo" name="titulo" type="text" class="form-control" id="inputTitulo" placeholder="Título">
+                           <input [(ngModel)]="titulo" name="titulo" type="text" class="form-control form-control-sm" id="inputTitulo" placeholder="Título">
                         </div>                  
                       </div>
                       <div class="form-group">
                         <label for="inputDescrição">Descrição</label>
-                        <textarea type="text" [(ngModel)]="descricao" name="descricao" class="form-control" id="inputDescrição" style="height: 100px" placeholder="Descrição"></textarea>
+                        <textarea type="text" [(ngModel)]="descricao" name="descricao" class="form-control form-control-sm" id="inputDescrição" style="height: 100px" placeholder="Descrição"></textarea>
                       </div>
                       <div class="form-group">
                         <label for="inputAutor">Autor</label>
-                        <input type="text" [(ngModel)]="autor" name="autor" class="form-control" id="inputAutor" placeholder="Nome Completo">
+                        <input type="text" [(ngModel)]="autor" name="autor" class="form-control form-control-sm" id="inputAutor" placeholder="Nome Completo">
                       </div>
                       <div class="form-row">
                         <div class="col">
+                              <label for="Categorias">Categorías</label>
+                              <select name="" id="" class="form-control form-control-sm">
+                                  <option value="dfjklsdjfkdjks">sdfdfff</option>
+                              </select>                                
+                        </div>
+                        <div class="col">
                             <label for="inputAno">Ano</label>
-                            <input type="number" [(ngModel)]="ano" name="ano" class="form-control" id="inputAno" placeholder="Ano">
+                            <input type="number" [(ngModel)]="ano" name="ano" class="form-control form-control-sm" id="inputAno" placeholder="Ano">
                         </div>                         
                         <div class="col">
                             <label for="inputPaginas">Total Paginas</label>
-                            <input type="number" [(ngModel)]="totalPaginas" name="totalPaginas" class="form-control" id="inputPaginas" placeholder="Paginas">
+                            <input type="number" [(ngModel)]="totalPaginas" name="totalPaginas" class="form-control form-control-sm" id="inputPaginas" placeholder="Paginas">
                         </div>
                          
                       </div>

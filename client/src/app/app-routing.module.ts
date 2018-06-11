@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: 'libros',
     loadChildren: 'app/components/libros/libros.module#LibrosModule'
-  },
+  },  
   {
     path: '',
     redirectTo: '',

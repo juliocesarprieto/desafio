@@ -14,15 +14,15 @@ git clone https://github.com/juliocesarprieto/desafio.git
 cd desafio
 ```
 
-Esto vai fazer uma copia do projeto localmente. Para instalar e executar as aplicações, seguir as seguintes instruções:
+Isto vai fazer uma copia do projeto localmente. Para instalar e executar as aplicações, seguir as seguintes instruções:
 
-Para executar o server, execute o comando `cd` no prompt dentro da pasta `server` e executar o seguinte comando: 
+Para executar o server, execute o comando `cd server` no `prompt` pra ficar dentro da pasta `server` e executar o seguinte comando: 
  
 ```bash
 mvnw spring-boot:run
 ```
 
-Para executar o client, execute o comando `cd` no prompt e dentro da pasta `client` e executar os seguintes comandos:
+Para executar o client, execute o comando `cd client` no `prompt` pra ficar dentro da pasta `client` e executar os seguintes comandos:
  
 ```bash
 npm install && npm start

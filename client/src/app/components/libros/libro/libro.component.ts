@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LivrosServiceService } from '../../../services/livros-service.service';
 import { Livros } from '../../../models/livros';
+import { Categorias } from '../../../models/categorias';
 
 @Component({
   selector: 'app-libro',
@@ -12,6 +13,7 @@ export class LibroComponent implements OnInit {
   showAdicionarLivro: boolean = false;
   atualizarLivro: boolean =false;
   titleView: string = '';
+  msgFiltarPelo = "Filter"
 
   id: number = 0;
   titulo: string ='';
@@ -19,6 +21,7 @@ export class LibroComponent implements OnInit {
   autor: string ='';
   ano: number =0;
   totalPaginas: number =0;
+  categoria: Categorias;
 
   livros: Livros;
   livroAtualizar: any;
@@ -56,7 +59,8 @@ export class LibroComponent implements OnInit {
         descricaoLivro : this.descricao,
         autor : this.autor,
         ano : this.ano,
-        totalPaginas : this.totalPaginas        
+        totalPaginas : this.totalPaginas,
+        categoria: this.categoria     
       };
 
       this.livroService.insertLivro(livro).subscribe(
@@ -78,7 +82,8 @@ export class LibroComponent implements OnInit {
           descricaoLivro : this.descricao,
           autor : this.autor,
           ano : this.ano,
-          totalPaginas : this.totalPaginas
+          totalPaginas : this.totalPaginas,
+          categoria: this.categoria
         };
 console.log(livro);
         this.livroService.atualizarLivro(livro).subscribe(

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.serverBiblioteca.server.models.Livros;
 import br.com.serverBiblioteca.server.repositories.LivrosRepository;
 
-
 @RestController
 @RequestMapping("/api/livros")
 public class LivrosService {
@@ -28,8 +27,15 @@ public class LivrosService {
 	@CrossOrigin(origins="*")
 	@GetMapping(produces = "application/json")
 	public @ResponseBody List<Livros> findAll(){		
-		List<Livros> livros = livrosRepository.findAll();
+		List<Livros> livros = livrosRepository.findAll();		
 		return livros;
+	}
+	
+	@CrossOrigin(origins="*")
+	@GetMapping(path="/{criterio}", produces = "application/json")
+	public @ResponseBody List<Livros> findByTitulo(@PathVariable String criterio){
+		List<Livros> libros = livrosRepository.findAllWithTituloLike(criterio);
+		return libros;
 	}
 	
 	@CrossOrigin(origins="*")
