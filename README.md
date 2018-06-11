@@ -4,6 +4,7 @@
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Angular 5](https://angular.io/)
 * [Node.js](https://nodejs.org/)
+* MySQL Server 5.1
 
 **Menu** 
 * [Getting Started](#getting-started)
