@@ -2,9 +2,12 @@ import { Injectable } from '@angular/core';
 import { Livros } from '../models/livros';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { URL_ROOT } from '../config/config';
 
 @Injectable()
 export class LivrosServiceService {
+
+  urlRoot = 'http://'+URL_ROOT.url+':'+URL_ROOT.port;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -12,7 +15,7 @@ export class LivrosServiceService {
   insertLivro(livro: Livros): Observable<HttpResponse<any>>{
 
     return this.httpClient.post(
-      'http://Localhost:8080/api/livros',
+      this.urlRoot+'/api/livros',
       livro,
       {
         observe: 'response',
@@ -25,7 +28,7 @@ export class LivrosServiceService {
   getAllLivros() : Observable<HttpResponse<Livros>>{
     
     return this.httpClient.get<Livros>(
-        'http://localhost:8080/api/livros',
+      this.urlRoot+'/api/livros',
         {
           observe : 'response'
         }
@@ -36,7 +39,7 @@ export class LivrosServiceService {
   atualizarLivro(livro: Livros): Observable<HttpResponse<any>>{
 
     return this.httpClient.put(
-      'http://Localhost:8080/api/livros',
+      this.urlRoot+'/api/livros',
         livro,
         {
           observe: 'response',
@@ -48,7 +51,7 @@ export class LivrosServiceService {
   //Remover livro
   removerLivro(livro : Livros) : Observable<HttpResponse<any>>{
     return this.httpClient.delete<any>(
-      'http://localhost:8080/api/livros'+"/"+livro.idLivros      
+      this.urlRoot+'/api/livros'+"/"+livro.idLivros      
     )
   }//--- Fim remover livro ---
 
