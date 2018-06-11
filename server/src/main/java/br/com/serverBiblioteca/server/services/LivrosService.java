@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +26,7 @@ public class LivrosService {
 	@Autowired
 	private LivrosRepository livrosRepository;
 	
+	@CrossOrigin(origins="*")
 	@GetMapping(produces = "application/json")
 	public @ResponseBody List<Livros> findAll(){		
 		List<Livros> livros = livrosRepository.findAll();
@@ -33,7 +35,7 @@ public class LivrosService {
 	
 	@CrossOrigin(origins="*")
 	@PostMapping(consumes="application/json")
-	public ResponseEntity<Object> insertLivro(@RequestBody Livros livro ){
+	public ResponseEntity<Void> insertLivro(@RequestBody Livros livro ){
 		try{
 			livrosRepository.save(livro);
 		}catch(Exception e){
@@ -43,6 +45,17 @@ public class LivrosService {
 		return ResponseEntity.ok().build();
 	}
 	
+	@CrossOrigin(origins="*")
+	@PutMapping(consumes="application/json")
+	public ResponseEntity<Void> atualizarlivro(@RequestBody Livros livro){
+		try{
+			livrosRepository.save(livro);
+		}catch(Exception e){
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build();
+		}
+		return ResponseEntity.ok().build();
+	}
 	
 
 }

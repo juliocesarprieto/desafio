@@ -9,42 +9,90 @@ import { Livros } from '../../../models/livros';
 })
 export class LibroComponent implements OnInit {
 
-  titulo: '';
-  descricao: '';
-  autor: '';
-  ano: number= 0;
+  showAdicionarLivro: boolean = false;
+  atualizarLivro: boolean =false;
+  titleView: string = '';
+
+  id: number = 0;
+  titulo: string ='';
+  descricao: string ='';
+  autor: string ='';
+  ano: number =0;
   totalPaginas: number =0;
+
+  livros: Livros;
+  livroAtualizar: any;
 
   constructor(public livroService: LivrosServiceService) { }
 
   ngOnInit() {
+    this.getLivros();
+  }
+
+  getLivros(){
+    this.livroService.getAllLivros().subscribe(
+      resp=>{
+          this.livros = resp.body;
+      },
+      error=>{
+        console.log(error.status)
+      }
+    )
   }
 
   actionBtnSalvar(event){
 
-    console.log("Entrie no action");
+    let livro: Livros ={       
+        idLivros : 0,
+        tituloLivro : this.titulo,
+        descricaoLivro : this.descricao,
+        autor : this.autor,
+        ano : this.ano,
+        totalPaginas : this.totalPaginas        
+      };
 
-    let livro: Livros={
-      idLivro : 0,
-      tituloLivro : this.titulo,
-      descricaoLivro : this.descricao,
-      autor : this.autor,
-      ano : this.ano,
-      totalPaginas : this.totalPaginas
-    };
+      this.livroService.insertLivro(livro).subscribe(
+            resp=>{
+            },
+            error=>{
+              console .log(error);
+            }
+          );      
+   
+  }//--- Fim actionBtnSalvar ---
 
-    this.livroService.insertLivro(livro).subscribe(
-      resp=>{
-        console.log(resp.body)
-      },
-      error=>{        
-       // if(error.status == 403){
-          console .log(error)                 
-          //this.router.navigate(['/auth']);
-        //}      
-      }
-    )  ;
+  actionBtnAtualizar(event){
 
+    let livro: Livros= {
+          idLivros : this.livroAtualizar.idLivros,
+          tituloLivro : this.titulo,
+          descricaoLivro : this.descricao,
+          autor : this.autor,
+          ano : this.ano,
+          totalPaginas : this.totalPaginas
+        };
+console.log(livro);
+        this.livroService.atualizarLivro(livro).subscribe(
+                  resp=>{
+                  },
+                  error=>{                    
+                  });
+     
+  }//--- Fim actionBtnAtualizar ---
+
+  actionBtnShowViewUpdate(event, livro: Livros){    
+   
+    this.id = livro.idLivros;
+    this.titulo = livro.tituloLivro;
+    this.descricao = livro.descricaoLivro;
+    this.autor = livro.autor;
+    this.ano = livro.ano;
+    this.totalPaginas = livro.totalPaginas;
+
+    this.titleView = "Atualizar livro";
+    this.atualizarLivro=true;
+    this.livroAtualizar = livro;
+    this.showAdicionarLivro = true;
   }
 
 }
