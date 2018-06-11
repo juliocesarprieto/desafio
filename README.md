@@ -40,3 +40,12 @@ bd.usuario= `usuario`
 bd.senha= `senha`
 ```
 
+Para configurar a comunicação com o server abrir o arquivo `config.ts` dentro `client/src/app/config/config.ts`
+
+```typescript
+export const URL_ROOT={
+    url : `url`,
+    port: `porta`
+}
+```
+
