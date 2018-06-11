@@ -6,12 +6,6 @@
 * [Node.js](https://nodejs.org/)
 * MySQL Server 5.1
 
-**Menu** 
-* [Getting Started](#getting-started)
-* [Links](#links)
-* [Help](#help)
-* [License](#license)
-
 ## Getting Started
 
 Para instalar o exemplo, executar os seguintes comandos:
@@ -34,3 +28,15 @@ Para executar o client, execute o comando `cd client` no `prompt` pra ficar dent
 ```bash
 npm install && npm start
 ```
+#### Configuração do server
+
+Para configurar a conexão com o Banco de Dados abrir o arquivo `application.properties` dentro `server/src/main/resources/application.properties`.
+
+```
+bd.url= `url`
+bd.port= `porta`
+bd.dataBase= `dataBase`
+bd.usuario= `usuario`
+bd.senha= `senha`
+```
+
