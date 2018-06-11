@@ -35,6 +35,17 @@ export class LivrosServiceService {
     )
   }//--- Fim retornar tudos os livros ---
 
+  //Retornar tudos os livros pesquisados pelo criterio de busqueda
+  getAllLivrosCriterio(criterioBusqueda : any) : Observable<HttpResponse<Livros>>{
+    
+    return this.httpClient.get<Livros>(
+      this.urlRoot+'/api/livros/'+criterioBusqueda,
+        {
+          observe : 'response'
+        }
+    )
+  }//--- Fim retornar tudos os livros ---
+
   //Atualizar novo livro 
   atualizarLivro(livro: Livros): Observable<HttpResponse<any>>{
 

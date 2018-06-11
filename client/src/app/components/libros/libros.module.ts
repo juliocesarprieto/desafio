@@ -6,6 +6,7 @@ import { LibrosRoutingModule } from './libros-routing.module';
 import { LibroComponent } from './libro/libro.component';
 import { LivrosServiceService } from '../../services/livros-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoriasService } from '../../services/categorias.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     LibroComponent
   ],
   providers: [
-    LivrosServiceService
+    LivrosServiceService,
+    CategoriasService
   ]
 })
 export class LibrosModule { }

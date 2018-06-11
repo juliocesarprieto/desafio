@@ -7,7 +7,7 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <div class="input-group mb-3">
               
-              <input type="text" class="form-control" aria-label="Text input" placeholder="Search Título, Descrição, Autor, Novela">
+              <input #criterio (keyup)="search(criterio.value)" type="text" class="form-control" aria-label="Text input" placeholder="Search Título, Descrição, Autor, Novela">
             </div>
           </div>
         <table class="table table-hover" style="height: 150px">
@@ -62,9 +62,9 @@
                       <div class="form-row">
                         <div class="col">
                               <label for="Categorias">Categorías</label>
-                              <select name="" id="" class="form-control form-control-sm">
-                                  <option value="dfjklsdjfkdjks">sdfdfff</option>
-                              </select>                                
+                              <select [(ngModel)]="cat" (ngModelChange)="selectChange($event)"  class="form-control form-control-sm" id="categoria" required [ngModelOptions]="{standalone: true}">
+                                  <option *ngFor="let cat of categorias" [value]="cat">{{cat.descricaoCategoria}}</option>
+                              </select>
                         </div>
                         <div class="col">
                             <label for="inputAno">Ano</label>

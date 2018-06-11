@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LivrosServiceService } from '../../../services/livros-service.service';
 import { Livros } from '../../../models/livros';
 import { Categorias } from '../../../models/categorias';
+import { CategoriasService } from '../../../services/categorias.service';
 
 @Component({
   selector: 'app-libro',
@@ -25,11 +26,13 @@ export class LibroComponent implements OnInit {
 
   livros: Livros;
   livroAtualizar: any;
+  categorias: Categorias;
 
-  constructor(public livroService: LivrosServiceService) { }
+  constructor(public livroService: LivrosServiceService, public categoriasService : CategoriasService) { }
 
   ngOnInit() {
     this.getLivros();
+    this.getCategorias();
   }
 
   actionBtnShowFormCadastrar(event){
@@ -51,8 +54,22 @@ export class LibroComponent implements OnInit {
     )
   }
 
+  search(criterio: any){
+    this.livroService.getAllLivrosCriterio(criterio).subscribe(
+      resp=>{
+          this.livros = resp.body;
+          this.showAdicionarLivro = false;
+          this.atualizarLivro =false;
+      },
+      error=>{
+        console.log(error.status)
+      }
+    )
+  }
+
   actionBtnSalvar(event){
 
+    console.log("dfgdfgdfgdf"+this.categoria)
     let livro: Livros ={       
         idLivros : 0,
         tituloLivro : this.titulo,
@@ -85,7 +102,7 @@ export class LibroComponent implements OnInit {
           totalPaginas : this.totalPaginas,
           categoria: this.categoria
         };
-console.log(livro);
+          console.log(livro);
         this.livroService.atualizarLivro(livro).subscribe(
                   resp=>{
                     this.getLivros();
@@ -103,6 +120,7 @@ console.log(livro);
     this.autor = livro.autor;
     this.ano = livro.ano;
     this.totalPaginas = livro.totalPaginas;
+    this.categoria = livro.categoria;
 
     this.titleView = "Atualizar livro";
     this.atualizarLivro=true;
@@ -116,6 +134,24 @@ console.log(livro);
     }, error=>{
 
     })
+  }
+
+  getCategorias(){
+    this.categoriasService.getAllCategorias()
+        .subscribe(
+            resp=>{
+              this.categorias = resp.body;
+            },
+            error=>{
+
+            }
+        )
+  }
+
+  selectChange( $event) {
+    //In my case $event come with a id value
+    this.categoria = this.categorias[$event];
+    console.log(this.categoria)
   }
 
 }
