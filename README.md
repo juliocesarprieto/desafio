@@ -1,10 +1,11 @@
 # Aplicação Web pra gerenciar os livros da biblioteca com Angular 5.0 e Spring Boot 2.0
 
-**Prerequisites:** 
+**Prerequisito:** 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Angular 5](https://angular.io/)
 * [Node.js](https://nodejs.org/)
 
+**Menu** 
 * [Getting Started](#getting-started)
 * [Links](#links)
 * [Help](#help)
