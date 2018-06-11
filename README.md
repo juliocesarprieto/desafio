@@ -11,18 +11,18 @@ Para instalar o exemplo, executar os seguintes comandos:
 
 ```bash
 git clone https://github.com/juliocesarprieto/desafio.git
-cd ....
+cd desafio
 ```
 
-This will get a copy of the project installed locally. To install all of its dependencies and start each app, follow the instructions below.
+Esto vai fazer uma copia do projeto localmente. Para instalar e executar as aplicações, seguir as seguintes instruções:
 
-Para executar o server, execute o comando cd no promp dentro da pasta server e executar o seguinte comando: 
+Para executar o server, execute o comando `cd` no prompt dentro da pasta `server` e executar o seguinte comando: 
  
 ```bash
 mvnw spring-boot:run
 ```
 
-To run the client, cd into the `client` folder and run:
+Para executar o client, execute o comando `cd` no prompt e dentro da pasta `client` e executar os seguintes comandos:
  
 ```bash
 npm install && npm start
