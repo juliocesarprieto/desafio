@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 6vh;">
+<div class="container" style="margin-top: 2vh;">
     
   <div class="row" *ngIf="!showAdicionarLivro">
     <div class="col-md-2"></div>
@@ -6,32 +6,36 @@
     <div class="col-md-8">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <div class="input-group mb-3">
-              
-              <input #criterio (keyup)="search(criterio.value)" type="text" class="form-control" aria-label="Text input" placeholder="Search Título, Descrição, Autor, Novela">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="validationTooltipUsernamePrepend"><i class="fa fa-search"></i></span>
+              </div>
+              <input #criterio (keyup)="search(criterio.value)" type="text" class="form-control" aria-label="Text input" placeholder="Search Título, Descrição, Autor, Novela" aria-describedby="validationTooltipUsernamePrepend">
             </div>
           </div>
-        <table class="table table-hover" style="height: 150px">
-            <thead thead-light>
-              <tr>                
-                <th scope="col">Título</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Autor</th>
-                <th scope="col">Categoría</th> 
-                <th></th>
-                <th></th>               
-              </tr>
-            </thead>
-            <tbody>                            
-              <tr *ngFor="let livro of livros">                  
-                  <td>{{livro.tituloLivro}}</td>
-                  <td>{{livro.descricaoLivro}}</td>
-                  <td>{{livro.autor}}</td>
-                  <td>{{livro.categoria.descricaoCategoria}}</td>
-                  <td><button (click)="actionBtnShowViewUpdate($event, livro)" class="btn btn-primary" style="width: 85%;"><i class="fa fa-edit"></i></button></td>
-                  <td><button (click)="actionBtnRemoverLivro($event, livro)" class="btn btn-danger" style="width: 85%;"><i class="fa fa-trash"></i></button></td>
-                </tr> 
-            </tbody>
-          </table>
+
+          <table class="table table-hover" style="height: 150px">
+                <thead thead-secondary>
+                  <tr>                
+                    <th scope="col">Título</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Categoría</th> 
+                    <th></th>
+                    <th></th>               
+                  </tr>
+                </thead>
+                <tbody>                            
+                  <tr *ngFor="let livro of livros">                  
+                      <td>{{livro.tituloLivro}}</td>
+                      <td>{{livro.descricaoLivro}}</td>
+                      <td>{{livro.autor}}</td>
+                      <td>{{livro.categoria.descricaoCategoria}}</td>
+                      <td><button (click)="actionBtnShowViewUpdate($event, livro)" class="btn btn-primary" style="width: 85%;"><i class="fa fa-edit"></i></button></td>
+                      <td><button (click)="actionBtnRemoverLivro($event, livro)" class="btn btn-danger" style="width: 85%;"><i class="fa fa-trash"></i></button></td>
+                    </tr> 
+                </tbody>
+              </table>
+                    
           <div class="row"><button (click)="actionBtnShowFormCadastrar($event)">Adicionar Livro</button></div>
     </div>
 
@@ -62,8 +66,8 @@
                       <div class="form-row">
                         <div class="col">
                               <label for="Categorias">Categorías</label>
-                            <select class="form-control" (change)="onChange($event)">
-                                  <option *ngFor="let cat of categorias"  [value]="cat.idCategorias">{{cat.idCategorias}}{{cat.descricaoCategoria}}</option>
+                            <select class="form-control form-control-sm" [(ngModel)]="categoria" (change)="onChangeSelect($event)">
+                                  <option *ngFor="let cat of categorias"  [value]="cat.idCategorias">{{cat.descricaoCategoria}}</option>
                               </select>
                         </div>
                         <div class="col">

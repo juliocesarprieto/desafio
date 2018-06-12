@@ -23,7 +23,9 @@ export class LibroComponent implements OnInit {
   autor: string ='';
   ano: number =0;
   totalPaginas: number =0;
-  categoria: Categorias;
+  categoria: Categorias=null;
+
+  mostrarAlert: boolean = false;
 
   livros: Livros;
   livroAtualizar: any;
@@ -109,6 +111,7 @@ export class LibroComponent implements OnInit {
         this.livroService.atualizarLivro(livro).subscribe(
                   resp=>{
                     this.getLivros();
+                    this.mostrarAlert=true;
                   },
                   error=>{                    
                   });
@@ -151,7 +154,7 @@ export class LibroComponent implements OnInit {
         )
   }
 
-  onChange(event) {
+  onChangeSelect(event) {
     for (let index = 0; index < this.categorias.length; index++) {
        const element = this.categorias[index];
        if(element.idCategorias == event.target.value ){
