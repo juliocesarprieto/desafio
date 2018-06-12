@@ -62,8 +62,8 @@
                       <div class="form-row">
                         <div class="col">
                               <label for="Categorias">Categorías</label>
-                              <select [(ngModel)]="cat" (ngModelChange)="selectChange($event)"  class="form-control form-control-sm" id="categoria" required [ngModelOptions]="{standalone: true}">
-                                  <option *ngFor="let cat of categorias" [value]="cat">{{cat.descricaoCategoria}}</option>
+                            <select class="form-control" (change)="onChange($event)">
+                                  <option *ngFor="let cat of categorias"  [value]="cat.idCategorias">{{cat.idCategorias}}{{cat.descricaoCategoria}}</option>
                               </select>
                         </div>
                         <div class="col">

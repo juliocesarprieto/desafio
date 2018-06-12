@@ -11,9 +11,9 @@ export class CategoriasService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllCategorias() : Observable<HttpResponse<Categorias>>{
+  getAllCategorias() : Observable<HttpResponse<Categorias[]>>{
     
-    return this.httpClient.get<Categorias>(
+    return this.httpClient.get<Categorias[]>(
       this.urlRoot+'/api/categorias',
         {
           observe : 'response'

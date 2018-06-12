@@ -26,13 +26,15 @@ export class LibroComponent implements OnInit {
 
   livros: Livros;
   livroAtualizar: any;
-  categorias: Categorias;
+  categorias: Categorias[];
+  selectChangeOption:number;
 
   constructor(public livroService: LivrosServiceService, public categoriasService : CategoriasService) { }
 
   ngOnInit() {
     this.getLivros();
-    this.getCategorias();
+    
+   this.getCategorias();
   }
 
   actionBtnShowFormCadastrar(event){
@@ -148,10 +150,10 @@ export class LibroComponent implements OnInit {
         )
   }
 
-  selectChange( $event) {
-    //In my case $event come with a id value
-    this.categoria = this.categorias[$event];
-    console.log(this.categoria)
+  onChange(event) {
+    //In my case $event come with a id value    
+    this.categoria = this.categorias.find((cat:Categorias)=> cat.idCategorias ==event.target.value);
+    
   }
 
 }

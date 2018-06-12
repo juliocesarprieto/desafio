@@ -7,12 +7,13 @@ import { LibroComponent } from './libro/libro.component';
 import { LivrosServiceService } from '../../services/livros-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriasService } from '../../services/categorias.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  imports: [
+  imports: [    
     CommonModule,
-    LibrosRoutingModule,
     FormsModule,
+    LibrosRoutingModule,    
     HttpClientModule
   ],
   declarations: [

@@ -1,6 +1,6 @@
 import { Categorias } from "./categorias";
 
-export interface Livros {
+export class Livros {
 
     idLivros: number;
     tituloLivro: string;
