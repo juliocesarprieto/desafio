@@ -3,6 +3,7 @@ import { LivrosServiceService } from '../../../services/livros-service.service';
 import { Livros } from '../../../models/livros';
 import { Categorias } from '../../../models/categorias';
 import { CategoriasService } from '../../../services/categorias.service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-libro',
@@ -151,9 +152,12 @@ export class LibroComponent implements OnInit {
   }
 
   onChange(event) {
-    //In my case $event come with a id value    
-    this.categoria = this.categorias.find((cat:Categorias)=> cat.idCategorias ==event.target.value);
-    
+    for (let index = 0; index < this.categorias.length; index++) {
+       const element = this.categorias[index];
+       if(element.idCategorias == event.target.value ){
+          this.categoria = element;         
+       }
+     }    
   }
 
 }
