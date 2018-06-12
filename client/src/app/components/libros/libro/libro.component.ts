@@ -73,8 +73,7 @@ export class LibroComponent implements OnInit {
   }
 
   actionBtnSalvar(event){
-
-    console.log("dfgdfgdfgdf"+this.categoria)
+    
     let livro: Livros ={       
         idLivros : 0,
         tituloLivro : this.titulo,
