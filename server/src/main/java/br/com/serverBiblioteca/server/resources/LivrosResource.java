@@ -1,4 +1,4 @@
-package br.com.serverBiblioteca.server.services;
+package br.com.serverBiblioteca.server.resources;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +16,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.serverBiblioteca.server.models.Livros;
 import br.com.serverBiblioteca.server.repositories.LivrosRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(value = "Api Rest livros")
 @RestController
 @RequestMapping("/api/livros")
-public class LivrosService {
+public class LivrosResource {
 	
 	@Autowired
 	private LivrosRepository livrosRepository;
 	
+	@ApiOperation(value = "retornar lista de livros")
 	@CrossOrigin(origins="*")
 	@GetMapping(produces = "application/json")
 	public @ResponseBody List<Livros> findAll(){		
@@ -31,6 +35,7 @@ public class LivrosService {
 		return livros;
 	}
 	
+	@ApiOperation(value = "retorna lista de categorias filtrada pelo criterio")
 	@CrossOrigin(origins="*")
 	@GetMapping(path="/{criteria}", produces = "application/json")
 	public @ResponseBody List<Livros> getByCriteria(@PathVariable String criteria){
@@ -38,6 +43,7 @@ public class LivrosService {
 		return libros;
 	}
 	
+	@ApiOperation(value = "inserir novo livro")
 	@CrossOrigin(origins="*")
 	@PostMapping(consumes="application/json")
 	public ResponseEntity<Void> insertLivro(@RequestBody Livros livro ){
@@ -50,6 +56,7 @@ public class LivrosService {
 		return ResponseEntity.ok().build();
 	}
 	
+	@ApiOperation(value = "atualizar livro")
 	@CrossOrigin(origins="*")
 	@PutMapping(consumes="application/json")
 	public ResponseEntity<Void> atualizarLivro(@RequestBody Livros livro){
@@ -62,6 +69,7 @@ public class LivrosService {
 		return ResponseEntity.ok().build();
 	}
 	
+	@ApiOperation(value = "remover livro")
 	@CrossOrigin(origins="*")
 	@DeleteMapping(path="/{idLivros}")
 	public ResponseEntity<Void> deleteLivro(@PathVariable Integer idLivros){

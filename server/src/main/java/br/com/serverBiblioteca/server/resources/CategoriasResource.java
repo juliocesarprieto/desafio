@@ -1,4 +1,4 @@
-package br.com.serverBiblioteca.server.services;
+package br.com.serverBiblioteca.server.resources;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.serverBiblioteca.server.models.Categorias;
 import br.com.serverBiblioteca.server.repositories.CategoriasRepository;
 import br.com.serverBiblioteca.server.repositories.LivrosRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
-
+@Api(value = "Api Rest Categorias")
 @RestController
 @RequestMapping("/api/categorias")
-public class CategoriasService {
+public class CategoriasResource {
 	
 	@Autowired
 	private CategoriasRepository categoriasRepository;
@@ -28,6 +30,7 @@ public class CategoriasService {
 	@Autowired
 	private LivrosRepository livrosRepository;
 	
+	@ApiOperation(value = "Retornar lista das categorias")
 	@CrossOrigin(origins="*")
 	@GetMapping(produces = "application/json")
 	public @ResponseBody List<Categorias> findAll(){		
@@ -35,15 +38,15 @@ public class CategoriasService {
 		return categorias;
 	}
 	
+	@ApiOperation(value = "Inserir nova categoria")
 	@CrossOrigin(origins="*")
 	@PostMapping(consumes = "application/json")
 	public ResponseEntity<Void> insert(@RequestBody Categorias categoria){
 		categoriasRepository.save(categoria);
-		
-	
 		return ResponseEntity.ok().build();
 	}
 	
+	@ApiOperation(value = "Atualizar categoria")
 	@CrossOrigin(origins="*")
 	@PutMapping(consumes = "application/json")
 	public ResponseEntity<Void> atualizar(@RequestBody Categorias categoria){
@@ -51,13 +54,13 @@ public class CategoriasService {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Remover categoria")
 	@CrossOrigin(origins="*")
 	@DeleteMapping(path="/{idCategoria}")
 	public ResponseEntity<Void> remover(@PathVariable Integer idCategoria){
 		
 		livrosRepository.deleteAllByIdCategoria(idCategoria);
-		categoriasRepository.deleteById(idCategoria);
-		
+		categoriasRepository.deleteById(idCategoria);		
 		return ResponseEntity.noContent().build();
 	}
 
