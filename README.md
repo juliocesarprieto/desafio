@@ -27,9 +27,9 @@ mvnw spring-boot:run
 
 Para ver o api-doc Restful:
 
-```
-[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
-```
+
+* [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
 
 Para executar o client, execute o comando `cd client` no `prompt` pra ficar dentro da pasta `client` e executar os seguintes comandos:
  
